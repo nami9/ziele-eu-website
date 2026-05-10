@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Graduate&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --sidebar-width: 160px;
+  --topbar-height: 65px;
+  
+  --color-page-bg: #4C599A;   /* html bg — visible as top-left dark corner */
+  --color-home: #a8b5d0;      /* homepage content + top-nav strip background */
+  --color-sozial: #344284;    /* Sozialpolitik nav button + page bg */
+  --color-umwelt: #293772;    /* Umweltpolitik nav button + page bg */
+  --color-wissen: #1A295E;    /* Wissenschaft nav button + page bg */
+  --color-sidebar: #f9bc50;
+  --color-btn: #e05555;
+}
+
+html {
+  background: var(--color-page-bg);
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Graduate', serif;
+  min-height: 100vh;
+}
+
+.page-wrapper {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  grid-template-rows: var(--topbar-height) 1fr;
+  min-height: 100vh;
+}
+
+/* ---- TOP BAR ---- */
+/* transparent — html bg (#4a5090) shows through the left spacer area */
+.top-bar {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  display: flex;
+  align-items: stretch;
+  overflow: visible;
+  position: relative;
+  z-index: 100;
+}
+
+.top-nav-spacer {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  /* transparent — shows the dark html background */
+}
+
+/* The nav buttons strip — light homepage color as background */
+.top-nav {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 12px 0 0;
+  gap: 0;
+  overflow: visible;
+}
+
+.top-nav a {
+  flex: 1;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 47px;
+  border-radius: 8px 8px 0 0;
+  font-size: 0.88rem;
+  letter-spacing: 0.01em;
+}
+
+/* Each section button gets its own color */
+.top-nav a:nth-child(1) { background: var(--color-sozial); }
+.top-nav a:nth-child(2) { background: var(--color-umwelt); }
+.top-nav a:nth-child(3) { background: var(--color-wissen); }
+
+/* Active tab is taller — protrudes up into the dark html bg area */
+.top-nav a.active {
+  height: 61px;
+  font-size: 0.95rem;
+}
+
+/* ---- SIDEBAR ---- */
+.sidebar {
+  grid-column: 1;
+  grid-row: 2;
+  background: var(--color-sidebar);
+  display: flex;
+  flex-direction: column;
+  padding-top: 18px;
+  overflow: visible;
+  position: relative;
+  z-index: 50;
+}
+
+.left-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.left-nav a {
+  display: block;
+  background: var(--color-btn);
+  color: white;
+  text-decoration: none;
+  padding: 10px 0;
+  margin-left: -24px;
+  border-radius: 28px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  width: 140px;
+  text-align: center;
+  font-size: 0.82rem;
+  white-space: nowrap;
+  position: relative;
+  z-index: 60;
+  letter-spacing: 0.02em;
+}
+
+.left-nav a.active {
+  width: 208px;
+}
+
+/* ---- SIDEBAR ACTIONS ---- */
+.sidebar-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 0 0 20px;
+}
+
+.icon-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--color-btn);
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.icon-btn svg {
+  width: 26px;
+  height: 26px;
+  fill: white;
+}
+
+/* ---- MAIN CONTENT ---- */
+.main-content {
+  grid-column: 2;
+  grid-row: 2;
+  background: var(--color-home);
+  min-height: calc(100vh - var(--topbar-height));
+  padding: 24px;
+}
+
+body.page-sozial .main-content { background: var(--color-sozial); }
+body.page-umwelt .main-content { background: var(--color-umwelt); }
+body.page-wissen .main-content { background: var(--color-wissen); }
