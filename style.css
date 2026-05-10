@@ -171,3 +171,121 @@ body {
 body.page-sozial .main-content { background: var(--color-sozial); }
 body.page-umwelt .main-content { background: var(--color-umwelt); }
 body.page-wissen .main-content { background: var(--color-wissen); }
+
+/* ---- HAMBURGER BUTTON (hidden on desktop) ---- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+body.sidebar-open .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+body.sidebar-open .hamburger span:nth-child(2) { opacity: 0; }
+body.sidebar-open .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---- SIDEBAR OVERLAY (mobile only) ---- */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 149;
+}
+
+body.sidebar-open .sidebar-overlay {
+  display: block;
+}
+
+/* ---- TABLET (≤ 1024px) ---- */
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 130px;
+    --topbar-height: 58px;
+  }
+
+  .top-nav a { font-size: 0.8rem; }
+
+  .left-nav a {
+    width: 130px;
+    font-size: 0.76rem;
+  }
+
+  .left-nav a.active { width: 172px; }
+
+  .icon-btn { width: 44px; height: 44px; }
+  .icon-btn svg { width: 22px; height: 22px; }
+}
+
+/* ---- MOBILE (≤ 640px) ---- */
+@media (max-width: 640px) {
+  :root {
+    --sidebar-width: 150px;
+    --topbar-height: 52px;
+  }
+
+  /* Single-column grid — sidebar leaves the flow */
+  .page-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  /* Spacer becomes the hamburger slot */
+  .top-nav-spacer {
+    width: 52px;
+    flex-shrink: 0;
+  }
+
+  .hamburger { display: flex; }
+
+  /* Sidebar slides in from the left as an overlay */
+  .sidebar {
+    position: fixed;
+    left: calc(-1 * var(--sidebar-width) - 10px);
+    top: var(--topbar-height);
+    height: calc(100vh - var(--topbar-height));
+    width: var(--sidebar-width);
+    z-index: 150;
+    transition: left 0.25s ease;
+    overflow: visible;
+  }
+
+  body.sidebar-open .sidebar {
+    left: 0;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Main content fills the full width */
+  .main-content {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .top-nav { padding: 8px 3px 0; gap: 3px; }
+
+  .top-nav a {
+    font-size: 0.65rem;
+    height: 40px;
+    border-radius: 6px 6px 0 0;
+  }
+
+  .top-nav a.active { 
+    height: 52px;
+    font-size: 0.8rem;
+  }
+}
