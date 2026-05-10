@@ -23,7 +23,8 @@
 html,
 body {
   height: 100vh;
-  height: 100svh; /* iOS Safari: excludes browser chrome */
+  height: 100svh;
+  height: calc(var(--vh, 1vh) * 100);
   overflow: hidden;
   background: var(--color-page-bg);
   font-family: 'Graduate', serif;
@@ -35,7 +36,8 @@ body {
   grid-template-columns: var(--sidebar-width) 1fr;
   grid-template-rows: var(--topbar-height) 1fr;
   height: 100vh;
-  height: 100svh; /* iOS Safari: excludes browser chrome */
+  height: 100svh;
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 /* ---- TOP BAR ---- */
@@ -261,7 +263,8 @@ body.sidebar-open .sidebar-overlay {
     left: calc(-1 * var(--sidebar-width) - 10px);
     top: var(--topbar-height);
     height: calc(100vh - var(--topbar-height));
-    height: calc(100svh - var(--topbar-height)); /* iOS Safari */
+    height: calc(100svh - var(--topbar-height));
+    height: calc(var(--vh, 1vh) * 100 - var(--topbar-height));
     width: var(--sidebar-width);
     z-index: 150;
     transition: left 0.25s ease;
