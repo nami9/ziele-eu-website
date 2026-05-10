@@ -11,29 +11,29 @@
   --topbar-height: 65px;
   
   --color-page-bg: #4C599A;   /* html bg — visible as top-left dark corner */
-  --color-home: #a8b5d0;      /* homepage content + top-nav strip background */
+  --color-home: #4C599A;      /* homepage content + top-nav strip background */
   --color-sozial: #344284;    /* Sozialpolitik nav button + page bg */
   --color-umwelt: #293772;    /* Umweltpolitik nav button + page bg */
   --color-wissen: #1A295E;    /* Wissenschaft nav button + page bg */
   --color-sidebar: #f9bc50;
   --color-btn: #e05555;
+  --font-color: #fff;
 }
 
-html {
-  background: var(--color-page-bg);
-  min-height: 100%;
-}
-
+html,
 body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-page-bg);
   font-family: 'Graduate', serif;
-  min-height: 100vh;
+  color: var(--font-color);
 }
 
 .page-wrapper {
   display: grid;
   grid-template-columns: var(--sidebar-width) 1fr;
   grid-template-rows: var(--topbar-height) 1fr;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 /* ---- TOP BAR ---- */
@@ -127,7 +127,7 @@ body {
 }
 
 .left-nav a.active {
-  width: 208px;
+  width: 200px;
 }
 
 /* ---- SIDEBAR ACTIONS ---- */
@@ -164,7 +164,7 @@ body {
   grid-column: 2;
   grid-row: 2;
   background: var(--color-home);
-  min-height: calc(100vh - var(--topbar-height));
+  overflow-y: auto;
   padding: 24px;
 }
 
