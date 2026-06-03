@@ -306,4 +306,26 @@ body.sidebar-open .sidebar-overlay {
     height: 52px;
     font-size: 0.8rem;
   }
+
+  
+}
+
+/* ---- flex-container ---- */
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+/* ---- flex-container: MOBILE (≤ 640px) ---- */
+@media (max-width: 640px) {
+.flex-container {
+    flex-direction: column;
+  }
+}
+
+/* ---- main-content images ---- */
+.main-content img {
+  width: 100%; 
+  height: auto; 
+  max-height: 400px; 
+  max-width: 400px;
 }
