@@ -10,7 +10,7 @@
 :root {
   --sidebar-width: 160px;
   --topbar-height: 65px;
-  
+
   --color-page-bg: #4C599A;   /* html bg — visible as top-left dark corner */
   --color-home: #4C599A;      /* homepage content + top-nav strip background */
   --color-sozial: #344284;    /* Sozialpolitik nav button + page bg */
@@ -307,12 +307,12 @@ body.sidebar-open .sidebar-overlay {
     border-radius: 6px 6px 0 0;
   }
 
-  .top-nav a.active { 
+  .top-nav a.active {
     height: 52px;
     font-size: 0.8rem;
   }
 
-  
+
 }
 
 /* ---- flex-container ---- */
@@ -333,11 +333,17 @@ body.sidebar-open .sidebar-overlay {
 }
 
 /* ---- main-content images ---- */
+.main-content .img-wrap {
+  width: 100%;
+  /* height: 300px;  oder responsive */
+  height: clamp(190px, 30vw, 420px);
+  overflow: hidden;
+}
 .main-content img {
-  width: 100%; 
-  height: auto; 
-  max-height: 400px; 
-  max-width: 400px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* ---- main-content list style ---- */
@@ -348,4 +354,11 @@ body.sidebar-open .sidebar-overlay {
 
 .main-content ul ul {
   list-style-type: '→ ';
+}
+
+.main-content hr {
+  border: none;
+  border-top: 0.2px dashed #ccc;
+  margin: 5px 0;
+  opacity: 0.4;
 }
