@@ -327,10 +327,25 @@ body.sidebar-open .sidebar-overlay {
   }
 }
 
+/* ---- main-content h2 margin ---- */
+.main-content h2 {
+  margin-top: 15px;
+}
+
 /* ---- main-content images ---- */
 .main-content img {
   width: 100%; 
   height: auto; 
   max-height: 400px; 
   max-width: 400px;
+}
+
+/* ---- main-content list style ---- */
+.main-content ul {
+    list-style-type: '- ';
+    padding: 0 25px;
+}
+
+.main-content ul ul {
+  list-style-type: '→ ';
 }
