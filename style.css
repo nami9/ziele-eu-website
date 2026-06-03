@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Graduate&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pridi&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -171,6 +172,10 @@ body {
   background: var(--color-home);
   overflow-y: auto;
   padding: 24px;
+
+  font-family: "Pridi", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .main-content a,
